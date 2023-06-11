@@ -2,7 +2,7 @@
 import { reactive } from 'vue'
 import PokemonList from '../components/PokemonList.vue'
 import { getFavoritePokemons } from '@/http'
-import { Pokemon } from '@/types'
+import type { Pokemon } from '@/types'
 
 interface State {
   pokemons: Pokemon[]
@@ -39,7 +39,9 @@ setFavoritePokemons()
   <main>
     <div class="container container--pushed">
       <PokemonList v-if="!state.isLoading && state.pokemons.length" :pokemons="state.pokemons" />
-      <div v-else-if="!userFavs.length || !Array.isArray(userFavs)">You dont have any favorite Pokemons!</div>
+      <div v-else-if="!userFavs.length || !Array.isArray(userFavs)">
+        You dont have any favorite Pokemons!
+      </div>
       <div v-else>Loading...</div>
     </div>
   </main>
